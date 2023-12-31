@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="ShoppingListCheckOff">
+
+<head>
+  <title>Shopping List App</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="app.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+  <div ng-controller="ToBuyShoppingController as toBuyCtrl">
+    <h2>To Buy List</h2>
+    <ul>
+      <li ng-repeat="item in toBuyCtrl.toBuyItems"  style="margin-top: 20px;">
+        {{ item.quantity }} {{ item.name }}
+        <button ng-click="toBuyCtrl.buyItem($index)">Bought</button>
+      </li>
+    </ul>
+    <p ng-if="toBuyCtrl.toBuyItems.length === 0">Everything is bought!</p>
+  </div>
+
+  <div ng-controller="AlreadyBoughtShoppingController as boughtCtrl" >
+    <h2>Already Bought List</h2>
+    <ul>
+      <li ng-repeat="item in boughtCtrl.boughtItems" style="margin-top: 20px;">
+        Bought {{ item.quantity }} {{ item.name }}
+      </li>
+    </ul>
+    <p ng-if="boughtCtrl.boughtItems.length === 0">Nothing bought yet.</p>
+  </div>
+</body>
+
+</html>
